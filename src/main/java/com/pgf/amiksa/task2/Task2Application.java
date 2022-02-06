@@ -18,20 +18,17 @@ public class Task2Application {
         ClientRepository clientRepository = configurableApplicationContext.getBean(ClientRepository.class);
         AddressRepository addressRepository = configurableApplicationContext.getBean(AddressRepository.class);
 
-        Address address = new Address("pl", "ldz", "ulica", "23232", "12");
+        Address address = new Address("Poland", "Lodz", "Piotrkowska", "90123", "1");
         addressRepository.save(address);
-        Client client = new Client("Jan", "mail@gm.com");
+        Client client = new Client("Jan", "jan@mail.com");
         client.setAddress(address);
         clientRepository.save(client);
 
-
-        Address address2 = new Address("pl", "wwa", "ulica", "23232", "12");
+        Address address2 = new Address("Poland", "Warszawa", "Domaniewska", "12345", "2a");
         addressRepository.save(address2);
-
-        client.setAddress(address2);
-        clientRepository.save(client);
-
-
+        Client client2 = new Client("Tomasz", "tomasz@mail.com");
+        client2.setAddress(address2);
+        clientRepository.save(client2);
     }
 
 }

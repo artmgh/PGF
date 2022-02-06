@@ -12,7 +12,6 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter(AccessLevel.NONE)
     private Long id;
 
     private String country;
@@ -21,7 +20,6 @@ public class Address {
     private String postcode;
     private String houseNumber;
 
-    @Getter(AccessLevel.NONE)
     @OneToOne(mappedBy = "address")
     private Client client;
 
@@ -36,5 +34,12 @@ public class Address {
         this.houseNumber = houseNumber;
     }
 
+    public Address(CreateAddressDto createAddressDto) {
+        this.country = createAddressDto.getCountry();
+        this.city = createAddressDto.getCity();
+        this.street = createAddressDto.getStreet();
+        this.postcode = createAddressDto.getPostcode();
+        this.houseNumber = createAddressDto.getHouseNumber();
+    }
 
 }

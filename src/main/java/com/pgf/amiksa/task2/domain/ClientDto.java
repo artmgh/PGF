@@ -5,8 +5,15 @@ import lombok.Value;
 @Value
 public class ClientDto {
 
-    private String name;
-    private String email;
-    private Address address;
+  Long id;
+  String name;
+  String email;
+  AddressDto address;
 
+  public ClientDto(Client client) {
+    id = client.getId();
+    name = client.getName();
+    email = client.getEmail();
+    address = client.getAddress() != null ? new AddressDto(client.getAddress()) : null;
+  }
 }

@@ -14,4 +14,10 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
         HttpStatus notFoundHttpStatus = HttpStatus.NOT_FOUND;
         return ResponseEntity.status(notFoundHttpStatus).body(new ApiError(e.getMessage(), notFoundHttpStatus.toString()));
     }
+
+    @ExceptionHandler(IncorrectEmailAddressException.class)
+    public ResponseEntity<ApiError> handleIncorrectData(Exception e) {
+        HttpStatus notFoundHttpStatus = HttpStatus.BAD_REQUEST;
+        return ResponseEntity.status(notFoundHttpStatus).body(new ApiError(e.getMessage(), notFoundHttpStatus.toString()));
+    }
 }

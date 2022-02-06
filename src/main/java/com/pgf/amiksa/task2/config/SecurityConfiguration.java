@@ -29,6 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
+                .headers().frameOptions().disable()
+                .and()
                 .httpBasic();
     }
 

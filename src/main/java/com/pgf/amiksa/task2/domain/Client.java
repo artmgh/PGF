@@ -1,5 +1,7 @@
 package com.pgf.amiksa.task2.domain;
 
+import com.pgf.amiksa.task2.rest.exception.IncorrectEmailAddressException;
+import com.pgf.amiksa.task2.utils.MailValidator;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.ToString;
@@ -14,11 +16,10 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Getter(AccessLevel.NONE)
     private Long id;
     private String name;
     private String email;
-    @OneToOne
+    @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "address_id", referencedColumnName = "id")
     private Address address;
 
@@ -27,7 +28,15 @@ public class Client {
 
     public Client(String name, String email) {
         this.name = name;
-        this.email = email;
+        this.email = validEmail(email);
+    }
+
+    private String validEmail(String email) {
+        if(MailValidator.patternMatches(email)){
+            return email;
+        }else {
+            throw new IncorrectEmailAddressException();
+        }
     }
 
     public void setAddress(Address address) {
