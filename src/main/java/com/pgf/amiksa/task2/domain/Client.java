@@ -2,7 +2,6 @@ package com.pgf.amiksa.task2.domain;
 
 import com.pgf.amiksa.task2.rest.exception.IncorrectEmailAddressException;
 import com.pgf.amiksa.task2.utils.MailValidator;
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -32,9 +31,9 @@ public class Client {
     }
 
     private String validEmail(String email) {
-        if(MailValidator.patternMatches(email)){
+        if (MailValidator.patternMatches(email)) {
             return email;
-        }else {
+        } else {
             throw new IncorrectEmailAddressException();
         }
     }

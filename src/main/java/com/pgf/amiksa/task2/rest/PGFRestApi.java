@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/clients")
 @AllArgsConstructor
-public class RestTest {
+public class PGFRestApi {
 
     private final ClientServiceImpl clientService;
 

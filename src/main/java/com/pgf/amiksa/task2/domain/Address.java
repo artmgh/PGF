@@ -1,6 +1,5 @@
 package com.pgf.amiksa.task2.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 
 import javax.persistence.*;
